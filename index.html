@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BaLeFLashouse - Professional Phone Technician</title>
+    <title>BaLeFLashouse - Professional Phone Modifications</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -38,24 +38,23 @@
         
         /* Header Styles */
         header {
-            background: rgba(18, 18, 18, 0.9);
+            background: rgba(18, 18, 18, 0.8);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             z-index: 1000;
             padding: 20px 0;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .header-container {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            font-size: 28px;
+            font-size: 1.8rem;
             font-weight: 700;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -69,43 +68,41 @@
             transform: scale(1.05);
         }
         
-        nav ul {
+        .nav-links {
             display: flex;
-            list-style: none;
+            gap: 30px;
         }
         
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
+        .nav-links a {
             color: var(--light);
             text-decoration: none;
             font-weight: 500;
-            font-size: 16px;
-            transition: all 0.3s ease;
             position: relative;
+            transition: all 0.3s ease;
         }
         
-        nav ul li a:after {
+        .nav-links a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            background: var(--gradient);
             bottom: -5px;
             left: 0;
+            background: var(--gradient);
             transition: width 0.3s ease;
         }
         
-        nav ul li a:hover:after {
+        .nav-links a:hover::after {
             width: 100%;
         }
         
-        .hamburger {
+        .mobile-menu-btn {
             display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
             cursor: pointer;
-            font-size: 24px;
         }
         
         /* Hero Section */
@@ -113,67 +110,29 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 80px;
             position: relative;
             overflow: hidden;
+            padding-top: 80px;
         }
         
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(110, 69, 226, 0.1) 0%, rgba(18, 18, 18, 1) 70%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(110, 69, 226, 0.2), transparent 70%);
             z-index: -1;
-            animation: pulse 15s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.2);
-            }
         }
         
         .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-        
-        .hero-text {
-            flex: 1;
-            padding-right: 50px;
+            max-width: 600px;
             animation: fadeInUp 1s ease;
         }
         
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            animation: fadeIn 1.5s ease;
-        }
-        
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            transform: perspective(1000px) rotateY(-10deg);
-            transition: all 0.5s ease;
-        }
-        
-        .hero-image img:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-        
-        h1 {
-            font-size: 48px;
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 20px;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -181,43 +140,37 @@
             color: transparent;
         }
         
-        .tagline {
-            font-size: 20px;
+        .hero p {
+            font-size: 1.2rem;
             margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.8);
+            opacity: 0.9;
         }
         
-        .btn {
+        .cta-button {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 15px 30px;
             background: var(--gradient);
             color: white;
-            border-radius: 50px;
             text-decoration: none;
+            border-radius: 50px;
             font-weight: 600;
-            margin-right: 15px;
-            margin-bottom: 15px;
             transition: all 0.3s ease;
             box-shadow: 0 10px 20px rgba(110, 69, 226, 0.3);
-            border: none;
-            cursor: pointer;
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
+        .cta-button:hover {
+            transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(110, 69, 226, 0.4);
         }
         
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            box-shadow: none;
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50%;
+            max-width: 600px;
+            animation: float 6s ease-in-out infinite;
         }
         
         /* About Section */
@@ -229,60 +182,64 @@
         .section-title {
             text-align: center;
             margin-bottom: 60px;
+            font-size: 2.5rem;
             position: relative;
         }
         
-        .section-title h2 {
-            font-size: 36px;
-            display: inline-block;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .section-title h2:after {
+        .section-title::after {
             content: '';
             position: absolute;
-            width: 70px;
-            height: 3px;
-            background: var(--gradient);
-            bottom: 0;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
         }
         
         .about-content {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-top: 50px;
+            gap: 50px;
         }
         
         .about-text {
             flex: 1;
-            padding-right: 50px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .about-image {
             flex: 1;
-            text-align: center;
-        }
-        
-        .about-image img {
-            max-width: 100%;
+            position: relative;
             border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             transition: all 0.5s ease;
         }
         
-        .about-image img:hover {
+        .about-image:hover {
             transform: scale(1.03);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         /* Services Section */
         .services {
-            background: var(--darker);
+            background-color: var(--darker);
             position: relative;
-            overflow: hidden;
         }
         
         .services::before {
@@ -292,8 +249,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
-            opacity: 0.3;
+            background: radial-gradient(circle at 70% 50%, rgba(136, 211, 206, 0.1), transparent 70%);
             z-index: 0;
         }
         
@@ -304,29 +260,47 @@
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
-            margin-top: 50px;
         }
         
         .service-card {
-            background: rgba(40, 40, 40, 0.7);
-            backdrop-filter: blur(10px);
+            background: rgba(40, 40, 40, 0.6);
             border-radius: 15px;
             padding: 30px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient);
+            opacity: 0.1;
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            z-index: -1;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(110, 69, 226, 0.3);
+        }
+        
+        .service-card:hover::before {
+            transform: rotate(90deg);
         }
         
         .service-icon {
-            font-size: 40px;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -335,13 +309,35 @@
         }
         
         .service-card h3 {
-            font-size: 22px;
+            font-size: 1.5rem;
             margin-bottom: 15px;
         }
         
         .service-card p {
-            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .service-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-link:hover {
+            color: var(--primary);
+        }
+        
+        .service-link:hover i {
+            transform: translateX(5px);
         }
         
         /* Contact Section */
@@ -349,103 +345,160 @@
             position: relative;
         }
         
-        .contact-info {
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(110, 69, 226, 0.1), transparent 70%);
+            z-index: -1;
+        }
+        
+        .contact-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-top: 50px;
+            gap: 50px;
         }
         
-        .contact-card {
+        .contact-info {
             flex: 1;
-            min-width: 250px;
-            background: rgba(40, 40, 40, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            border-color: var(--secondary);
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
         .contact-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-text a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .contact-text a:hover {
             color: var(--secondary);
+            opacity: 1;
         }
         
-        .contact-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
         }
         
-        .contact-card a {
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--gradient);
+            transform: translateY(-5px);
+        }
+        
+        .map-container {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            height: 400px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
             color: var(--light);
             text-decoration: none;
             transition: all 0.3s ease;
         }
         
-        .contact-card a:hover {
+        .footer-links a:hover {
             color: var(--secondary);
         }
         
-        /* Footer */
-        footer {
-            background: var(--darker);
-            padding: 50px 0 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 0 10px;
-            color: var(--light);
-            font-size: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: var(--gradient);
-            transform: translateY(-5px);
-        }
-        
         .copyright {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
-            margin-top: 30px;
+            opacity: 0.7;
+            font-size: 0.9rem;
         }
         
         /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -457,77 +510,84 @@
             }
         }
         
+        @keyframes float {
+            0% {
+                transform: translateY(-50%) translateX(0);
+            }
+            50% {
+                transform: translateY(-50%) translateX(-10px);
+            }
+            100% {
+                transform: translateY(-50%) translateX(0);
+            }
+        }
+        
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-text {
-                padding-right: 0;
-                margin-bottom: 50px;
+            .hero h1 {
+                font-size: 2.8rem;
             }
             
             .about-content {
                 flex-direction: column;
             }
             
-            .about-text {
-                padding-right: 0;
-                margin-bottom: 50px;
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .map-container {
+                height: 300px;
             }
         }
         
         @media (max-width: 768px) {
-            .hamburger {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
                 display: block;
             }
             
-            nav ul {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--darker);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.5s ease;
+            .hero {
+                text-align: center;
+                padding-top: 100px;
             }
             
-            nav ul.active {
-                left: 0;
+            .hero-content {
+                margin: 0 auto;
             }
             
-            nav ul li {
-                margin: 20px 0;
+            .hero-image {
+                display: none;
             }
             
-            h1 {
-                font-size: 36px;
+            .services-grid {
+                grid-template-columns: 1fr;
             }
             
-            .tagline {
-                font-size: 18px;
-            }
-            
-            .section-title h2 {
-                font-size: 30px;
+            .section-title {
+                font-size: 2rem;
             }
         }
         
         @media (max-width: 576px) {
-            .btn {
-                display: block;
-                width: 100%;
-                margin-right: 0;
+            .hero h1 {
+                font-size: 2.2rem;
             }
             
-            .contact-card {
-                min-width: 100%;
-                margin: 15px 0;
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 12px 25px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
@@ -535,36 +595,32 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
-            <a href="#" class="logo">BaLeFLashouse</a>
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
+        <div class="container">
             <nav>
-                <ul id="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+                <a href="#" class="logo">BaLeFLashouse</a>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>BaLeFLashouse</h1>
-                <p class="tagline">Professional Phone Technician & Custom Solutions</p>
-                <p>Specializing in phone modifications, custom ROMs, and advanced technical solutions for your mobile devices.</p>
-                <div class="hero-buttons">
-                    <a href="https://wa.me/6281218618154" class="btn"><i class="fab fa-whatsapp"></i> Contact via WhatsApp</a>
-                    <a href="#services" class="btn btn-outline">Our Services</a>
-                </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Professional Phone Modifications</h1>
+                <p>Specialized in custom ROMs, FRP removal, IMEI unblocking, and various smartphone modifications to enhance your device's capabilities.</p>
+                <a href="#contact" class="cta-button">Get in Touch</a>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Phone Repair">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Smartphone modifications">
             </div>
         </div>
     </section>
@@ -572,18 +628,16 @@
     <!-- About Section -->
     <section class="section" id="about">
         <div class="container">
-            <div class="section-title">
-                <h2>About Me</h2>
-            </div>
+            <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Hello, I'm BaLeFLashouse, a professional phone technician with years of experience in mobile device modifications and repairs.</p>
-                    <p>I specialize in custom solutions for various needs including driver apps, custom ROM installations, and advanced phone modifications to enhance your device's capabilities.</p>
-                    <p>My services are designed to provide reliable, efficient, and customized solutions for your specific requirements. Whether you need to modify your device for work applications or want to unlock its full potential, I've got you covered.</p>
-                    <p>Customer satisfaction is my top priority, and I ensure all services are delivered with professionalism and technical excellence.</p>
+                    <h3>BaLeFLashouse - Phone Modification Expert</h3>
+                    <p>With years of experience in smartphone modifications, I provide professional services to unlock your device's full potential. From custom ROM installations to complex system modifications, I offer reliable solutions for your smartphone needs.</p>
+                    <p>My expertise covers a wide range of brands and models, ensuring that your device receives the best possible treatment with the latest tools and techniques available in the industry.</p>
+                    <p>Customer satisfaction is my top priority, and I strive to deliver exceptional service with quick turnaround times and transparent communication throughout the process.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="About BaLeFLashouse">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="BaLeFLashouse workspace">
                 </div>
             </div>
         </div>
@@ -592,88 +646,258 @@
     <!-- Services Section -->
     <section class="section services" id="services">
         <div class="container services-container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-            </div>
+            <h2 class="section-title">My Services</h2>
             <div class="services-grid">
                 <!-- Service 1 -->
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Oprek Handphone</h3>
-                    <p>Custom modifications for attendance apps, driver apps, custom ROM installations, and more.</p>
-                    <a href="https://wa.me/6281218618154?text=saya%20ingin%20oprek%20untuk%20absensi" class="btn">Contact for Service</a>
+                    <h3>Oprek Handphone untuk Absensi</h3>
+                    <p>Modify your smartphone for attendance systems with guaranteed functionality.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20oprek%20handphone%20untuk%20absensi%0ATipe%20handphone%20%3D%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
                 
                 <!-- Service 2 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-motorcycle"></i>
                     </div>
-                    <h3>Module Registration</h3>
-                    <p>Registration/Renewal for To Be Stars Module, Fake GCR, and other specialized modules.</p>
-                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20Regis%20modul%20to%20be%20stars" class="btn">Contact for Service</a>
+                    <h3>Oprek Handphone untuk Ojek Online</h3>
+                    <p>Optimize your device for online transportation applications.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20oprek%20handphone%20untuk%20ojek%20online%0ATipe%20handphone%20%3D%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
                 
                 <!-- Service 3 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-unlock"></i>
+                        <i class="fas fa-code-branch"></i>
                     </div>
-                    <h3>Remove Locks</h3>
-                    <p>Remove pattern locks, screen locks, Google accounts, and FRP locks from your device.</p>
-                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20menghapus%20pola%20atau%20kunci%20layar" class="btn">Contact for Service</a>
+                    <h3>Custom ROM Installation</h3>
+                    <p>Install custom ROMs to enhance performance and features.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20oprek%20handphone%20untuk%20pasang%20custom%20ROM%0ATipe%20handphone%20%3D%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
                 
                 <!-- Service 4 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fab fa-apple"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <h3>iPhone Services</h3>
-                    <p>Unblock iPhone IMEI, bypass Wi-Fi only mode, and cellular bypass for iPhones.</p>
-                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20unblock%20imei%20iPhone" class="btn">Contact for Service</a>
+                    <h3>Regist Module To Be Stars</h3>
+                    <p>Register for the To Be Stars module to unlock special features.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20regist%20module%20to%20be%20stars%0ANama%20%3A%20%0AEmail%20%3A%20%0ANo%20WhatsApp%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
                 
                 <!-- Service 5 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-cloud"></i>
+                        <i class="fas fa-sync-alt"></i>
                     </div>
-                    <h3>Mi Account Services</h3>
-                    <p>Clean Mi Cloud or bypass Mi account locks on Xiaomi devices.</p>
-                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20bypass%20akun%20mi" class="btn">Contact for Service</a>
+                    <h3>Perpanjang Module To Be Stars</h3>
+                    <p>Extend your To Be Stars module subscription.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20perpanjang%20module%20to%20be%20stars%0ANama%20%3A%20%0AEmail%20%3A%20%0ANo%20WhatsApp%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
                 
                 <!-- Service 6 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-code-branch"></i>
+                        <i class="fas fa-user-secret"></i>
                     </div>
-                    <h3>Rebuild ROM</h3>
-                    <p>Custom ROM building services tailored to your specific device and requirements.</p>
-                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20request%20buildrom%2C%20tipe%20HP%20%3A" class="btn">Contact for Service</a>
+                    <h3>Regist Fake GCR</h3>
+                    <p>Register for Fake GCR services with complete confidentiality.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20regist%20fake%20gcr%0AUsername%20%3A%20%0APassword%20%3A%20%0ANo%20WhatsApp%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
                 
                 <!-- Service 7 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-laptop"></i>
+                        <i class="fas fa-history"></i>
                     </div>
-                    <h3>Windows Update</h3>
-                    <p>Professional Windows updates for your PC or laptop to keep your system running smoothly.</p>
-                    <a href="https://wa.me/6281218618154?text=saya%20ingin%20update%20Windows%20buat%20PC%2C%20spek%20PC%20%3A" class="btn">Contact for Service</a>
+                    <h3>Perpanjang Fake GCR</h3>
+                    <p>Renew your Fake GCR subscription for continued service.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20perpanjang%20fake%20gcr%0AUsername%20%3A%20%0APassword%20%3A%20%0ANo%20WhatsApp%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
                 
                 <!-- Service 8 -->
                 <div class="service-card">
                     <div class="service-icon">
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                    <h3>Remove Pola/Kunci Layar</h3>
+                    <p>Unlock your device if you've forgotten your pattern or password.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20remove%20pola%20handphone%0ATipe%20handphone%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 9 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Remove Akun Google/FRP</h3>
+                    <p>Bypass Factory Reset Protection (FRP) on your Android device.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20remove%20akun%20Google%20%2FFrp%0ATipe%20handphone%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 10 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <h3>Unblock IMEI iPhone</h3>
+                    <p>Unlock your iPhone's IMEI to restore full functionality.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20unblock%20imei%20iPhone%0ATipe%20iPhone%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 11 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Bypass iPhone Wi-Fi Only</h3>
+                    <p>Enable cellular functionality on Wi-Fi only iPhones.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20bypass%20iPhone%20wi-fi%20only%0ATipe%20iPhone%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 12 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sim-card"></i>
+                    </div>
+                    <h3>Bypass iPhone Cell</h3>
+                    <p>Advanced solutions for cellular network issues on iPhones.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20bypass%20iPhone%20Cell%0ATipe%20iPhone%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 13 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Clean Akun MI/MI Cloud</h3>
+                    <p>Remove MI account locks and clean MI Cloud associations.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20clean%20mi%20cloud%0ATipe%20handphone%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 14 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-unlock-alt"></i>
+                    </div>
+                    <h3>Bypass Akun MI/MI Cloud</h3>
+                    <p>Bypass MI account locks on Xiaomi devices.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20bypass%20akun%20MI%20atau%20MI%20cloud%0ATipe%20handphone%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 15 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>RebuildROM</h3>
+                    <p>Custom ROM building services for your specific needs.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20request%20buildrom%0ATipe%20handphone%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 16 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Update Windows PC</h3>
+                    <p>Professional Windows updates and optimizations for your PC.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20update%20Windows%20di%20PC%0ASpek%20PC%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 17 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Update Windows Laptop</h3>
+                    <p>Optimize your laptop with the latest Windows updates.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20update%20Windows%20laptop%0ATipe%20laptop%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 18 -->
+                <div class="service-card">
+                    <div class="service-icon">
                         <i class="fas fa-tools"></i>
                     </div>
-                    <h3>Tools Rental</h3>
-                    <p>Rent professional tools like Unlock Tools, DFT Pro, Android Multi Tools, TR Tools, etc.</p>
-                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20sewa%20unlock%20tools" class="btn">Contact for Service</a>
+                    <h3>Sewa Unlock Tool</h3>
+                    <p>Rent professional unlocking tools for your needs.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20sewa%20unlock%20tool%0ABerapa%20jam%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 19 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>DFT Pro</h3>
+                    <p>Rent DFT Pro tools for advanced device flashing.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20sewa%20dft%20pro%0ABerapa%20jam%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 20 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile"></i>
+                    </div>
+                    <h3>Android Multi Tool (AMT)</h3>
+                    <p>Rent Android Multi Tool for comprehensive device management.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20sewa%20Android%20multi%20tool%20%28%20AMT%20%29%0ABerapa%20jam%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 21 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <h3>TR Tools V2</h3>
+                    <p>Rent TR Tools V2 for specialized device modifications.</p>
+                    <a href="https://wa.me/6281218618154?text=Saya%20ingin%20sewa%20TR%20tools%20v2%0ABerapa%20jam%20%3A%20" class="service-link">
+                        Contact via WhatsApp <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -682,44 +906,53 @@
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>Contact Me</h2>
-            </div>
-            <div class="contact-info">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <a href="https://maps.app.goo.gl/tdCackoppwcKUoBF9" target="_blank">View on Google Maps</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <a href="mailto:irfaniqbale@gmail.com">irfaniqbale@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>WhatsApp</h4>
+                                <a href="https://wa.me/6281218618154" target="_blank">0812-1861-8154</a>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Location</h3>
-                    <a href="https://maps.app.goo.gl/tdCackoppwcKUoBF9" target="_blank">View on Google Maps</a>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <a href="mailto:irfaniqbale@gmail.com">irfaniqbale@gmail.com</a>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>WhatsApp</h3>
-                    <a href="https://wa.me/6281218618154">0812-1861-8154</a>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-share-alt"></i>
-                    </div>
-                    <h3>Social Media</h3>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/irfan.iqbal.3511/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/IrfanIqbale" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@baleflashouse" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/irfan.iqbal.3511/" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/IrfanIqbale" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@baleflashouse" class="social-link" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
                     </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.798511757686!2d107.610851!3d-6.917579999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTUnMDMuMyJTIDEwN8KwMzYnMzkuMSJF!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -728,31 +961,36 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="social-links">
-                <a href="https://www.facebook.com/irfan.iqbal.3511/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/IrfanIqbale" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@baleflashouse" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://wa.me/6281218618154" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:irfaniqbale@gmail.com"><i class="fas fa-envelope"></i></a>
+            <div class="footer-content">
+                <div class="footer-logo">BaLeFLashouse</div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
             </div>
-            <p class="copyright">© 2023 BaLeFLashouse. All Rights Reserved.</p>
-            <p>For any inquiries, please contact via WhatsApp: <a href="https://wa.me/6281218618154">0812-1861-8154</a></p>
+            <div class="copyright">
+                &copy; 2023 BaLeFLashouse. All Rights Reserved.
+            </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
         
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         });
         
-        // Close menu when clicking on a link
-        document.querySelectorAll('#nav-menu a').forEach(link => {
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
             });
         });
         
@@ -762,9 +1000,8 @@
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
+                
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
@@ -776,7 +1013,7 @@
         
         // Animation on scroll
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.service-card, .contact-card, .section-title');
+            const elements = document.querySelectorAll('.service-card, .about-image, .contact-item');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
@@ -790,7 +1027,7 @@
         };
         
         // Set initial state for animated elements
-        document.querySelectorAll('.service-card, .contact-card').forEach(element => {
+        document.querySelectorAll('.service-card, .about-image, .contact-item').forEach(element => {
             element.style.opacity = '0';
             element.style.transform = 'translateY(30px)';
             element.style.transition = 'all 0.6s ease';
